@@ -5,10 +5,26 @@ litellm_settings:
   drop_params: true
   set_verbose: true
 
+# model_list:
+#   - model_name: claude-3-5-sonnet-20240620
+#     litellm_params:
+#       model: claude-3-5-sonnet-20240620
+#       api_base: https://api.anthropic.com/v1
+#       api_key: os.environ/ANTHROPIC_API_KEY
+#       rpm: 60 # rate limit in requests per minute (rpm)
+
+
 model_list:
-  - model_name: claude-3-5-sonnet-20240620
+  - model_name: claude-3-5-sonnet
     litellm_params:
-      model: claude-3-5-sonnet-20240620
-      api_base: https://api.anthropic.com/v1
-      api_key: os.environ/ANTHROPIC_API_KEY
-      rpm: 60 # rate limit in requests per minute (rpm)
+      model: anthropic/claude-3-5-sonnet-20240620
+  - model_name: llama-3.1-405b-reasoning # Model Alias to use for requests
+    litellm_params:
+      model: groq/llama-3.1-405b-reasoning
+      api_key: "os.environ/GROQ_API_KEY" # ensure you have `GROQ_API_KEY` in your .env
+  - model_name: llama-3.1-70b-versatile # Model Alias to use for requests
+    litellm_params:
+      model: groq/llama-3.1-70b-versatile
+      api_key: "os.environ/GROQ_API_KEY" # ensure you have `GROQ_API_KEY` in your .env
+
+  
